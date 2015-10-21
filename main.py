@@ -17,6 +17,7 @@
 import logging
 import os
 
+
 import jinja2
 import webapp2
 
@@ -37,14 +38,6 @@ class MainHandler(webapp2.RequestHandler):
         
         self.response.out.write(template1.render({"message_query":message_query}))
         
-class showMessages(webapp2.RequestHandler):
-    def get(self):
-        message_query=database1.query().order(-database1.last_touch_date_time)
-        
-        
-        template2= jinja_env.get_template('templates/all_the_messages.html')
-        
-        self.response.out.write(template2.render({"message_query":message_query}))
         
 
 class saveMessage(webapp2.RedirectHandler):
